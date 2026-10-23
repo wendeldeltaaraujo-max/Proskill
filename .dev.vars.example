@@ -1,0 +1,9 @@
+# Copie para .dev.vars (já ignorado pelo git) para rodar com `wrangler dev`.
+DATABASE_URL=postgresql://USUARIO:SENHA@ep-xxxx.sa-east-1.aws.neon.tech/neondb?sslmode=require
+CONTENT_TOKEN_SECRET=troque-por-um-valor-aleatorio-longo   # ex.: openssl rand -base64 48
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+PUBLIC_ORIGIN=http://localhost:8787
+CONTENT_ORIGIN=http://content.localhost:8787
+DEV_INSECURE_COOKIES=1
+ADMIN_EMAIL=wendel.delta.araujo@gmail.com

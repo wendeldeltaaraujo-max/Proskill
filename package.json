@@ -1,0 +1,22 @@
+{
+  "name": "proskill",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.mjs",
+    "migrate": "node scripts/migrate.mjs",
+    "make-admin": "node scripts/make-admin.mjs",
+    "start": "node src/node-server.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,28 @@
+# Cloudflare Workers — ProSkill. Veja SETUP.md para criar bucket, segredos e domínios.
+name = "proskill"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true            # o Worker vê todas as requisições (API, origem de conteúdo e cabeçalhos de segurança)
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "proskill-courses"   # crie com: npx wrangler r2 bucket create proskill-courses  (bucket PRIVADO)
+
+[vars]
+ADMIN_EMAIL = "wendel.delta.araujo@gmail.com"      # vira ADM MASTER ao se cadastrar (só se ainda não houver admin)
+PUBLIC_ORIGIN = "https://proskill.example.com"            # AJUSTAR: domínio do site
+CONTENT_ORIGIN = "https://cursos-proskill.example.com"    # AJUSTAR: domínio SEPARADO só para o conteúdo dos cursos (mesmo Worker)
+
+# Domínios (descomente e ajuste). Os dois hosts apontam para ESTE Worker.
+# [[routes]]
+# pattern = "proskill.example.com"
+# custom_domain = true
+# [[routes]]
+# pattern = "cursos-proskill.example.com"
+# custom_domain = true
+
+# SEGREDOS (nunca no arquivo): npx wrangler secret put DATABASE_URL | CONTENT_TOKEN_SECRET | STRIPE_SECRET_KEY | STRIPE_WEBHOOK_SECRET
